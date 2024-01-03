@@ -46,3 +46,20 @@ public class Recipe
     // Foreign Key to the Cuisine table
     public int CuisineId { get; set; }
 }
+
+public class CreateRecipeDto
+{
+    public int RecipeId { get; set; }
+    public string RecipeTitle { get; set; }
+    public string TagLine { get; set; }
+    public int Difficulty { get; set; }
+    public int TimeToPrepare { get; set; }
+    public string RecipeMethod { get; set; }
+    public DateTime PostedOn { get; set; }
+    public string Cuisine { get; set; }
+    public string RecipeImg { get; set; }
+    public int? ForkedFrom { get; set; }
+    public int? OriginalRecipeId { get; set; }
+    public int UserId { get; set; }
+    public int CuisineId { get; set; }
+}
