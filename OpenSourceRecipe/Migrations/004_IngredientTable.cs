@@ -9,7 +9,7 @@ public class CreateIngredientTable : Migration
     {
         Execute.Sql("CREATE TABLE \"Ingredient\"" +
                     "(" +
-                    "\"IngredientId\" INT NOT NULL," +
+                    "\"IngredientId\" SERIAL PRIMARY KEY," +
                     "\"IngredientName\" VARCHAR(255) NOT NULL," +
                     "\"Nutrition\" TEXT NOT NULL," +
 
