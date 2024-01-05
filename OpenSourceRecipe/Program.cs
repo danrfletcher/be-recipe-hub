@@ -149,6 +149,7 @@ builder.Services.AddAuthentication(options =>
 // Repositories
 builder.Services.AddScoped<UserRepository>();
 builder.Services.AddScoped<RecipeRepository>();
+builder.Services.AddScoped<IngredientRepository>();
 
 // Controllers
 builder.Services.AddControllers();
