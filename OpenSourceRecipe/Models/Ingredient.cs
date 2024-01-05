@@ -15,3 +15,16 @@ public class Ingredient
     // Nutrition information for the ingredient
     public string? Nutrition { get; set; }
 }
+
+public class CreateIngredientDto
+{
+    public string? IngredientName { get; set; }
+    public string? Nutrition { get; set; }
+}
+
+public class GetIngredientDto
+{
+    public int IngredientId { get; set; }
+    public string? IngredientName { get; set; }
+    public string? Nutrition { get; set; }
+}
