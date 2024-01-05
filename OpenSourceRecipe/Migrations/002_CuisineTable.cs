@@ -14,9 +14,6 @@ public class CreateCuisineTable : Migration
                     "\"Description\" TEXT NOT NULL," +
                     "\"CuisineImg\" VARCHAR(255) NOT NULL" +
                     ")");
-        Execute.Sql("INSERT INTO \"Cuisine\" " +
-                    "(\"CuisineName\",\"Description\", \"CuisineImg\") " +
-                    "VALUES ('Example Cuisine', 'Example Cuisine Description', 'Example Cuisine IMG')");
     }
 
     public override void Down()

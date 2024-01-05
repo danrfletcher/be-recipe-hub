@@ -90,8 +90,15 @@ if (env == "Testing")
     END
     $do$;";
 
+    var insertCuisineScript = @"
+    INSERT INTO ""Cuisine"" (""CuisineName"", ""Description"", ""CuisineImg"") 
+    VALUES ('Example Cuisine', 'Example Cuisine Description', 'Example Cuisine IMG');";
+
     using var cmd = new NpgsqlCommand(deleteScript, connection);
     cmd.ExecuteNonQuery();
+
+    using var insertCmd = new NpgsqlCommand(insertCuisineScript, connection);
+    insertCmd.ExecuteNonQuery();
 
     connection.Close();
 }
