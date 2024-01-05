@@ -29,25 +29,18 @@ public class IngredientRepository
             _connectionString = "DefaultConnection";
         }
     }
-    public async Task<CreateIngredientDto> CreateIngredient(CreateIngredientDto Ingredient)
+    public async Task<GetIngredientDto> CreateIngredient(CreateIngredientDto ingredient)
     {
         await using var connection = new NpgsqlConnection(_configuration.GetConnectionString(_connectionString!));
 
         var parameters = new DynamicParameters();
-        parameters.Add("IngredientTitle", Ingredient.IngredientTitle);
-        parameters.Add("TagLine", Ingredient.TagLine);
-        parameters.Add("Difficulty", Ingredient.Difficulty);
-        parameters.Add("TimeToPrepare", Ingredient.TimeToPrepare);
-        parameters.Add("IngredientMethod", Ingredient.IngredientMethod);
-        parameters.Add("IngredientImg", Ingredient.IngredientImg);
-        parameters.Add("Cuisine", Ingredient.Cuisine);
-        parameters.Add("ForkedFromId", Ingredient.ForkedFromId);
-        parameters.Add("OriginalIngredientId", Ingredient.OriginalIngredientId);
-        parameters.Add("UserId", Ingredient.UserId);
-        parameters.Add("CuisineId", Ingredient.CuisineId);
+        parameters.Add("IngredientName ", ingredient.IngredientName);
+        parameters.Add("Nutrition", ingredient.Nutrition);
         
-        var sql;
-        var newRecipe = await connection.QuerySingleOrDefaultAsync<GetRecipeDto>(sql, parameters);
+        var sql = "INSERT INTO \"Ingredient\" " +
+                  "(\"IngredientName\", \"Nutrition\") " +
+                  "VALUES (@IngredientName, @Nutrition) RETURNING *";
+        var newIngredient = await connection.QuerySingleOrDefaultAsync<GetRecipeDto>(sql, parameters);
 
         if (newIngredient == null)
         {
